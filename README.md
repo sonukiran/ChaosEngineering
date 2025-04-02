@@ -83,79 +83,90 @@ A repo for experimenting and work on chaos engineering
     Auto-generated interactive API docs.
     Built-in validation and serialization.
     High-performance due to Starlette and Pydantic.
-* Docker
-    What is it?
-    Docker is a platform for developing, shipping, and running applications in containers. Containers are lightweight and include all dependencies needed to run an application.
-* Why Docker?
-    Consistent environment across development, testing, and production. 
-    Simplifies dependency management.
-    Makes deployment faster and more reliable.
-* Kubernetes
+* **Docker**
     * What is it?
-      Kubernetes (K8s) is an open-source platform for automating the deployment, scaling, and management of containerized applications.
+        Docker is a platform for developing, shipping, and running applications in containers. Containers are lightweight and include all dependencies needed to run an application.
+    * Why Docker?
+        Consistent environment across development, testing, and production. 
+        Simplifies dependency management.
+        Makes deployment faster and more reliable.
+* **Kubernetes**
+    * What is it?
+        Kubernetes (K8s) is an open-source platform for automating the deployment, scaling, and management of containerized applications.
     * Why Kubernetes?
-      Provides features like auto-scaling, load balancing, and rolling updates.
-      Ensures high availability and fault tolerance.
-      Self-healing capabilities (e.g., automatic restart of failed containers).
-* LitmusChaos
+        Provides features like auto-scaling, load balancing, and rolling updates.
+        Ensures high availability and fault tolerance.
+        Self-healing capabilities (e.g., automatic restart of failed containers).
+* **LitmusChaos**
     * What is it?
-      LitmusChaos is an open-source Chaos Engineering platform that helps test the resilience of Kubernetes environments by introducing disruptions.
+        LitmusChaos is an open-source Chaos Engineering platform that helps test the resilience of Kubernetes environments by introducing disruptions.
     * Why LitmusChaos?
-      Native Kubernetes integration.
-      Allows you to simulate real-world failure scenarios.
+        Native Kubernetes integration.
+        Allows you to simulate real-world failure scenarios.
     * Provides detailed reports and metrics for resilience analysis.
+
 **1.3. Development and Setup**
 **1.3.1. Step 1: FastAPI Application Development**
-    Created a simple FastAPI app with endpoints for testing.
-    Added Swagger UI for interactive API documentation
-**1.3.2. Step 2: Containerizing FastAPI with Docker**
-    Created a Dockerfile to containerize the app:
-    Built and tested the Docker image locally:
-**1.3.3. Step 3: Deploying FastAPI on Kubernetes**
-    Wrote Kubernetes deployment and service YAML files:
-    Deployment:
-    fastapi-deployment.yaml
+    * Created a simple FastAPI app with endpoints for testing.
+    * Added Swagger UI for interactive API documentation
 
-    Service:
-    fastapi-service.yaml
+**1.3.2. Step 2: Containerizing FastAPI with Docker**
+
+    * Created a Dockerfile to containerize the app:
+    * Built and tested the Docker image locally:
+
+**1.3.3. Step 3: Deploying FastAPI on Kubernetes**
+
+    Wrote Kubernetes deployment and service YAML files:
+        Deployment:
+        fastapi-deployment.yaml
+
+        Service:
+        fastapi-service.yaml
 
     Verified deployment and exposed service:
-
-    kubectl get pods -n fastapichaos kubectl get svc -n fastapichaos
+        kubectl get pods -n fastapichaos kubectl get svc -n fastapichaos
 
 **1.4. Setting Up LitmusChaos**
 **1.4.1. Step 1: Install LitmusChaos**
-Installed LitmusChaos CRDs and control plane in Kubernetes:
-https://docs.litmuschaos.io/docs/getting-started/installation/
 
-Verified installation:
+* Installed LitmusChaos CRDs and control plane in Kubernetes:
+    https://docs.litmuschaos.io/docs/getting-started/installation/
 
-kubectl get pods -n litmus
+* Verified installation:
+    kubectl get pods -n litmus
 
 **1.5. Creating and Running a Chaos Experiment**
 **1.5.1. Configured Environment in the litmuschaos ui**
+
 ![Alt Text](images/chaosenvironment.png)
 
 **1.5.2. Created the Pod-Delete Chaos Experiment:**
+
 ![Alt Text](images/chaosexperiment.png)
 
 **1.5.3. Configured the Chaos Engine:**
 **1.5.4. Executed the Experiment:**
+
 ![Alt Text](images/poddeleteexperiment.png)
 
 **1.6. Observations and Outcomes**
 **1.6.1.  Chaos Experiment Execution**
-    Pods of the FastAPI app were intentionally deleted by the chaos engine.
-    Kubernetes automatically restarted the deleted pods due to deployment configurations.
+
+    * Pods of the FastAPI app were intentionally deleted by the chaos engine.
+    * Kubernetes automatically restarted the deleted pods due to deployment configurations.
+
 **1.6.2. Monitoring Application Health**
-    Configured LitmusChaos HTTP probes to monitor FastAPI endpoints.
-    Application health was monitored using probes
+    * Configured LitmusChaos HTTP probes to monitor FastAPI endpoints.
+    * Application health was monitored using probes
+
 **1.6.3. Key Learnings**
-    Verified application resilience under failure scenarios.
-    Demonstrated Kubernetes self-healing capabilities.
-    Successfully integrated monitoring and Chaos Engineering.
+    * Verified application resilience under failure scenarios.
+    * Demonstrated Kubernetes self-healing capabilities.
+    * Successfully integrated monitoring and Chaos Engineering.
+
 **1.7. Tools and Commands Summary**
-    FastAPI Application Development:
-    Docker:
-    Kubernetes:
-    LitmusChaos:
+    * FastAPI Application Development:
+    * Docker:
+    * Kubernetes:
+    * LitmusChaos:
