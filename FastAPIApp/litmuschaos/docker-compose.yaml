@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:4.2
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root        # Database root username
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword  # Database root password
+
+  litmusportal-frontend:
+    image: litmuschaos/litmusportal-frontend:3.12.0
+    container_name: litmusportal-frontend
+    ports:
+      - "9091:9091"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://root:rootpassword@mongo:27017"  # Corrected MongoDB URI with quotes
+      JWT_SECRET: litmus_secret  # Use a placeholder if needed
+
+  litmusportal-server:
+    image: litmuschaos/litmusportal-server:3.12.0
+    container_name: litmusportal-server
+    ports:
+      - "9002:9002"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://root:rootpassword@mongo:27017"  # Corrected MongoDB URI with quotes
+      JWT_SECRET: litmus_secret  # Use a placeholder if needed
+      VERSION: "3.12.0"           # Keep only the version
+
+  litmusportal-auth-server:
+    image: litmuschaos/litmusportal-auth-server:3.12.0
+    container_name: litmusportal-auth-server
+    ports:
+      - "9003:9003"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://root:rootpassword@mongo:27017"  # Corrected MongoDB URI with quotes
+      JWT_SECRET: litmus_secret  # Use a placeholder if needed
+      VERSION: "3.12.0"           # Keep only the version
+      ADMIN_USERNAME: "admin"        # Added the ADMIN_USERNAME
+      ADMIN_PASSWORD: "admin123"     # Added the ADMIN_PASSWORD
+      DB_SERVER: "mongo:27017"        # Database server
+      DB_USER: "root"                 # Added the DB_USER variable
+      DB_PASSWORD: "rootpassword"     # Database password matching MongoDB setup

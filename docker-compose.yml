@@ -1,0 +1,9 @@
+services:
+  fastapi-app:  # Name of the service
+    build:
+      context: .                    # Sets the root directory (ChaosEngineering) as the build context
+      dockerfile: Docker/Dockerfile  # Path to the Dockerfile, relative to the build context
+    ports:
+      - "8080:8080"                 # Maps port 8000 on the host to port 8000 in the container
+    volumes:
+      - ./FastAPIApp/FastAPIChaos:/app  # Mounts the FastAPI app directory in the container for live updates

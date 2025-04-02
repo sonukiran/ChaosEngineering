@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build:
+      context: .  # Current directory
+    ports:
+      - "8010:8010"

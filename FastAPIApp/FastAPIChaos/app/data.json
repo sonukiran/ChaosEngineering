@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Sample Item",
+        "description": "This is a sample item description."
+    },
+    {
+        "id": 2,
+        "name": "Sample item 2",
+        "description": "This is a sample item description for id 2"
+    }
+]

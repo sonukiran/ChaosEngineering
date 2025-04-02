@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deployment
+  namespace: fastapichaos
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi-container
+        image: localhost/fastapichaos-fastapi-app:latest  # Updated to ensure it uses the local image
+        imagePullPolicy: IfNotPresent                     # Ensure it uses local if available
+        ports:
+        - containerPort: 8010
