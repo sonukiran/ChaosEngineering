@@ -4,10 +4,13 @@ A repo for experimenting and work on chaos engineering
 ![Alt Text](images/Architecture.png)
 
 ![Alt Text](images/flow.png)
+
 **1.1. Overview of Chaos Engineering**
   **What is Chaos Engineering?**
+
   Chaos Engineering is a disciplined approach to testing the resilience of systems in production by intentionally introducing controlled faults and failures. The    goal is to identify vulnerabilities and weaknesses in the system before they manifest in real-world scenarios, ensuring that the system can recover gracefully     and continue to meet business requirements.
   Key Principles of Chaos Engineering
+
   **Start Small:**
   Begin with small, controlled experiments on non-critical components to understand the impact.
   
@@ -75,8 +78,11 @@ A repo for experimenting and work on chaos engineering
   Kubernetes automatically restarts failed pods.
   It redistributes workloads when nodes fail.
   Tools like LitmusChaos extend these capabilities to simulate real-world failure scenarios.
+
 **1.2. Overview of Tools and Technologies**
+
 **1.2.1. FastAPI**
+
 * What is it?
     FastAPI is a modern, fast (high-performance) web framework for Python, built on standard Python type hints. It's designed to be easy to use while being suitable for production-grade applications.
 * Why FastAPI?
@@ -106,28 +112,28 @@ A repo for experimenting and work on chaos engineering
     * Provides detailed reports and metrics for resilience analysis.
 
 **1.3. Development and Setup**
+
 **1.3.1. Step 1: FastAPI Application Development**
-    * Created a simple FastAPI app with endpoints for testing.
-    * Added Swagger UI for interactive API documentation
+* Created a simple FastAPI app with endpoints for testing.
+* Added Swagger UI for interactive API documentation
 
 **1.3.2. Step 2: Containerizing FastAPI with Docker**
-
-    * Created a Dockerfile to containerize the app:
-    * Built and tested the Docker image locally:
+* Created a Dockerfile to containerize the app:
+* Built and tested the Docker image locally:
 
 **1.3.3. Step 3: Deploying FastAPI on Kubernetes**
-
-    Wrote Kubernetes deployment and service YAML files:
+* Wrote Kubernetes deployment and service YAML files:
         Deployment:
         fastapi-deployment.yaml
 
         Service:
         fastapi-service.yaml
 
-    Verified deployment and exposed service:
+* Verified deployment and exposed service:
         kubectl get pods -n fastapichaos kubectl get svc -n fastapichaos
 
 **1.4. Setting Up LitmusChaos**
+
 **1.4.1. Step 1: Install LitmusChaos**
 
 * Installed LitmusChaos CRDs and control plane in Kubernetes:
@@ -137,6 +143,7 @@ A repo for experimenting and work on chaos engineering
     kubectl get pods -n litmus
 
 **1.5. Creating and Running a Chaos Experiment**
+
 **1.5.1. Configured Environment in the litmuschaos ui**
 
 ![Alt Text](images/chaosenvironment.png)
@@ -157,15 +164,18 @@ A repo for experimenting and work on chaos engineering
     * Kubernetes automatically restarted the deleted pods due to deployment configurations.
 
 **1.6.2. Monitoring Application Health**
+
     * Configured LitmusChaos HTTP probes to monitor FastAPI endpoints.
     * Application health was monitored using probes
 
 **1.6.3. Key Learnings**
+
     * Verified application resilience under failure scenarios.
     * Demonstrated Kubernetes self-healing capabilities.
     * Successfully integrated monitoring and Chaos Engineering.
 
 **1.7. Tools and Commands Summary**
+
     * FastAPI Application Development:
     * Docker:
     * Kubernetes:
