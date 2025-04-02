@@ -3,77 +3,77 @@ A repo for experimenting and work on chaos engineering
 
 ![Alt Text](images/Architecture.png)
 
-1.1. Overview of Chaos Engineering
-What is Chaos Engineering?
-Chaos Engineering is a disciplined approach to testing the resilience of systems in production by intentionally introducing controlled faults and failures. The goal is to identify vulnerabilities and weaknesses in the system before they manifest in real-world scenarios, ensuring that the system can recover gracefully and continue to meet business requirements.
-Key Principles of Chaos Engineering
-Start Small:
-Begin with small, controlled experiments on non-critical components to understand the impact.
-
-Automate Experiments:
-Use tools like LitmusChaos, Gremlin, or Chaos Monkey to automate fault injection and monitoring.
-
-Build Hypotheses:
-Before running experiments, predict how the system will behave under specific failures.
-
-Run in Production-Like Environments:
-Ensure experiments mimic real-world environments to get accurate results.
-
-Minimize Blast Radius:
-Scope experiments to reduce risk and ensure quick recovery.
-
-Why Chaos Engineering?
-
-Improves Resilience:
-Helps organizations build robust systems capable of handling unexpected failures.
-
-Validates Redundancy Mechanisms:
-Ensures failover systems, backups, and auto-scaling work as expected.
-
-Boosts Confidence:
-Teams gain confidence in deploying changes and handling emergencies.
-
-Encourages Proactive Problem-Solving:
-Helps identify issues before they cause outages or customer impact.
-
-Common Chaos Engineering Scenarios
-
-Pod/Service Failures:
-Simulate failures in microservices or Kubernetes pods.
-
-Network Latency:
-Inject latency or packet loss to observe the system's behavior under network disruptions.
-
-Resource Starvation:
-Decrease CPU, memory, or disk availability to test resource management.
-
-Database Downtime:
-Simulate database outages to test system failover.
-
-Steps in Chaos Engineering
-
-Define the System’s Steady State:
-Determine key metrics that define the system's normal functioning (e.g., API response time, throughput).
-
-Create a Hypothesis:
-Example: If a pod is deleted, Kubernetes should recreate it within 5 seconds without impacting the service.
-
-Introduce Failures:
-Use tools to inject failures (e.g., delete a pod, throttle network bandwidth).
-
-Observe and Measure:
-Monitor the impact of the chaos experiment using metrics, logs, or alerts.
-
-Learn and Improve:
-Document findings and improve the system's resilience.
-
-Chaos Engineering in Kubernetes
-
-Kubernetes provides native self-healing capabilities, making it an ideal environment for Chaos Engineering. For example:
-
-Kubernetes automatically restarts failed pods.
-It redistributes workloads when nodes fail.
-Tools like LitmusChaos extend these capabilities to simulate real-world failure scenarios.
+**1.1. Overview of Chaos Engineering**
+  **What is Chaos Engineering?**
+  Chaos Engineering is a disciplined approach to testing the resilience of systems in production by intentionally introducing controlled faults and failures. The    goal is to identify vulnerabilities and weaknesses in the system before they manifest in real-world scenarios, ensuring that the system can recover gracefully     and continue to meet business requirements.
+  Key Principles of Chaos Engineering
+  **Start Small:**
+  Begin with small, controlled experiments on non-critical components to understand the impact.
+  
+  **Automate Experiments:**
+  Use tools like LitmusChaos, Gremlin, or Chaos Monkey to automate fault injection and monitoring.
+  
+  **Build Hypotheses:**
+  Before running experiments, predict how the system will behave under specific failures.
+  
+  **Run in Production-Like Environments:**
+  Ensure experiments mimic real-world environments to get accurate results.
+  
+  **Minimize Blast Radius:**
+  Scope experiments to reduce risk and ensure quick recovery.
+  
+  **Why Chaos Engineering?**
+  
+  *Improves Resilience:
+  Helps organizations build robust systems capable of handling unexpected failures.
+  
+  *Validates Redundancy Mechanisms:
+  Ensures failover systems, backups, and auto-scaling work as expected.
+  
+  *Boosts Confidence:
+  Teams gain confidence in deploying changes and handling emergencies.
+  
+  *Encourages Proactive Problem-Solving:
+  Helps identify issues before they cause outages or customer impact.
+  
+  Common Chaos Engineering Scenarios
+  
+  Pod/Service Failures:
+  Simulate failures in microservices or Kubernetes pods.
+  
+  Network Latency:
+  Inject latency or packet loss to observe the system's behavior under network disruptions.
+  
+  Resource Starvation:
+  Decrease CPU, memory, or disk availability to test resource management.
+  
+  Database Downtime:
+  Simulate database outages to test system failover.
+  
+  Steps in Chaos Engineering
+  
+  Define the System’s Steady State:
+  Determine key metrics that define the system's normal functioning (e.g., API response time, throughput).
+  
+  Create a Hypothesis:
+  Example: If a pod is deleted, Kubernetes should recreate it within 5 seconds without impacting the service.
+  
+  Introduce Failures:
+  Use tools to inject failures (e.g., delete a pod, throttle network bandwidth).
+  
+  Observe and Measure:
+  Monitor the impact of the chaos experiment using metrics, logs, or alerts.
+  
+  Learn and Improve:
+  Document findings and improve the system's resilience.
+  
+  Chaos Engineering in Kubernetes
+  
+  Kubernetes provides native self-healing capabilities, making it an ideal environment for Chaos Engineering. For example:
+  
+  Kubernetes automatically restarts failed pods.
+  It redistributes workloads when nodes fail.
+  Tools like LitmusChaos extend these capabilities to simulate real-world failure scenarios.
 1.2. Overview of Tools and Technologies
 1.2.1. FastAPI
 What is it?
